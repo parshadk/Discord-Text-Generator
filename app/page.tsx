@@ -131,19 +131,7 @@ export default function DiscordTextFormatter() {
           ].map((item, index) => (
             <button
               key={`fg-${index}`}
-              onClick={() => {
-                const span = document.createElement("span")
-                span.style.color = item.color
-                applyStyle("", false, "")
-                const selection = window.getSelection()
-                if (selection && selection.rangeCount > 0) {
-                  const range = selection.getRangeAt(0)
-                  const selectedNode = range.startContainer.parentNode
-                  if (selectedNode instanceof HTMLElement) {
-                    selectedNode.style.color = item.color
-                  }
-                }
-              }}
+              onClick={() => applyStyle(`text-[${item.color}]`)}
               className="w-8 h-8 mx-1 rounded"
               style={{ backgroundColor: item.color }}
               aria-label={`Foreground color ${item.ansi}`}
